@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "signalsmith-stretch-rs"
+name = "pitch-shift-rs"
 version = "0.1.0"
 dependencies = [
  "cmake",
