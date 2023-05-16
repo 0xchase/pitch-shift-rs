@@ -21,7 +21,7 @@ impl PitchShifter {
         }
     }
 
-    pub fn process(&mut self, inputs: *mut *mut f32, input_samples: u32, outputs: *mut *mut f32, output_samples: u32) {
+    pub fn process(&mut self, inputs: &[f32], outputs: &mut [f32], output_samples: u32) {
         unsafe {
             pitch_shifter_process(
                 self.shifter,
@@ -33,21 +33,21 @@ impl PitchShifter {
         }
     }
 
-    pub fn prepare_default(&mut self, channels: u32, sample_rate: f32) {
+    pub fn prepare_default(&mut self, sample_rate: f32) {
         unsafe {
             pitch_shifter_prepare_default(self.shifter, channels, sample_rate);
         }
     }
 
-    pub fn prepare_cheaper(&mut self, channels: u32, sample_rate: f32) {
+    pub fn prepare_cheaper(&mut self, sample_rate: f32) {
         unsafe {
-            pitch_shifter_prepare_cheaper(self.shifter, channels, sample_rate);
+            pitch_shifter_prepare_cheaper(self.shifter, 1, sample_rate);
         }
     }
 
-    pub fn prepare_custom(&mut self, channels: u32, block_samples: u32, interval_samples: u32) {
+    pub fn prepare_custom(&mut self, block_samples: u32, interval_samples: u32) {
         unsafe {
-            pitch_shifter_prepare_custom(self.shifter, channels, block_samples, interval_samples);
+            pitch_shifter_prepare_custom(self.shifter, 1, block_samples, interval_samples);
         }
     }
 
