@@ -1,10 +1,11 @@
-extern crate cmake;
-use cmake::Config;
+extern crate cc;
 
-fn main()
-{
-    let dst = Config::new("libstretch").build();       
-
-    println!("cargo:rustc-link-search=native={}", dst.display());
-    println!("cargo:rustc-link-lib=static=stretch");    
+fn main() {
+    println!("cargo:include=libstretch/");
+    cc::Build::new()
+        .cpp(true)
+        .file("libstretch/stretch.cpp")
+        .flag_if_supported("-std=c++11")
+        .cpp_link_stdlib("stdc++")
+        .compile("stretch");
 }
