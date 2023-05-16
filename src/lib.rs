@@ -1,3 +1,4 @@
+#[link(name="stretch", kind="static")]
 pub struct PitchShifter {
     shifter: *mut OpaquePitchShifter,
 }
