@@ -21,7 +21,7 @@ impl PitchShifter {
         }
     }
 
-    pub fn process(&mut self, inputs: &[f32], outputs: &mut [f32], output_samples: u32) {
+    pub fn process(&mut self, inputs: &[f32], outputs: &mut [f32]) {
         let mut i = inputs.as_ptr();
         let mut o = outputs.as_mut_ptr();
         unsafe {
