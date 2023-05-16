@@ -1,5 +1,5 @@
 [package]
-name = "pitch-shift-rs"
+name = "signalsmith-stretch-sys"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
